@@ -1,0 +1,8 @@
+services:
+     bibliotecadb:
+            image: mongo:5.0.0
+            container_name: biblioteca-database
+            ports:
+                - "27017:27017"
+            volumes:
+                - ./biblioteca/data/db
