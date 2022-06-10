@@ -14,12 +14,6 @@ export const BibliotecarioLayout = ({ children }) => {
 
     
 
-    if(!isLogged) return (
-        <Box sx={{ display: 'flex', alignItems:'center', flexDirection:'column', justifyContent:'center', width:'100vw', height:'100vh', color:'white'}}>
-        <h4>Cargando...</h4>
-        <CircularProgress sx={{color:'white'}}/>
-      </Box>
-    )
 
   return (
     

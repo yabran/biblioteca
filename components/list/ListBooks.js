@@ -9,7 +9,7 @@ import { AgregarLibroForm } from '../form/AgregarLibroForm';
 
 
 
-const ListBooks=()=> {
+const ListBooks=({search=null})=> {
     
 
     const {books, getAllBooks}= useBookContext();
@@ -76,7 +76,7 @@ const ListBooks=()=> {
         
     ];
 
-    const rows= books.map((book, index)=>{
+    const rows= (search||books).map((book, index)=>{
         return {
             id: book._id,
             indice:index+1,

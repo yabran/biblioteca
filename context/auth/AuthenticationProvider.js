@@ -15,7 +15,8 @@ const initialState={
         rol:'',
         nombre:'',
         apellido:'',
-    }
+    },
+    users:[],
 }
 
 
@@ -40,6 +41,11 @@ const reducer = (state, action) => {
                     isLogged:false,
                     user:null
                 }
+        case 'GET_USERS':
+            return{
+                ...state,
+                users:action.payload
+            }
         default:
             return state;
             
@@ -72,7 +78,7 @@ const AuthenticationProvider = ({children}) => {
                 router.replace('/alumnoPage')
             }else{
                 
-                router.replace('/bibliotecarioPage')
+                router.replace('/admin/libros')
             }
     
             return data.user;
@@ -108,15 +114,63 @@ const AuthenticationProvider = ({children}) => {
         }
       }
 
+      const addUser=async(user)=>{
+          console.log(user)
+        try {
+            const {data}=await bibliotecaApi.post('/user/add', user);
+            return data;
+        } catch (error) {
+            return null;
+        }
+        
+    
+    
+      }
+
+      const editUser=async(user,id)=>{
+          try {
+            const {data}=await bibliotecaApi.put('/user/edit?id='+id, user);
+            return data;
+        }
+         catch (error) {
+              
+        }
+      }
+
+      const getUser=async(id)=>{
+        try {
+            const {data}=await bibliotecaApi.get('/user/getUser?id='+id);
+            return data;
+        } catch (error) {
+            return null;
+        }
+      }
+
+      const getUsers=async()=>{
+        try {
+            const {data}=await bibliotecaApi.get('/user/getUsers');
+            dispatch({type:'GET_USERS', payload:data.users});
+            return data;
+        } catch (error) {
+            return null;
+        }
+      }
+      
+
 
 
     return(
         <AuthContext.Provider value={{
             isLogged:state.isLogged,
             user:state.user,
+            users:state.users,
             login,
             logout,
-            checkToken
+            checkToken,
+            addUser,
+            editUser,
+            getUser,
+            getUsers
             
 
             

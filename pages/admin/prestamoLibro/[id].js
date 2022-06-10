@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 
 
 
+
 import Info from '../../../components/libro/Info'
 import {db} from '../../../database'
 
@@ -13,7 +14,7 @@ import {Libro} from '../../../models'
 
 const PrestamoLibroPage=({libro})=> {
 
-    
+   
 
     
   return (
@@ -35,7 +36,7 @@ export const getServerSideProps = async (ctx) => {
     const {id}=ctx.query;
     
     await db.connect();
-    const libro= JSON.parse(JSON.stringify(await Libro.findById(id)));
+    const libro= JSON.parse(JSON.stringify(await Libro.findById(id).populate('prestamo')));
     await db.disconnect();
     
     

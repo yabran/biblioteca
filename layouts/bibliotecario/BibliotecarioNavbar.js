@@ -9,6 +9,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useAuthContext } from '../../context/auth/AuthenticationProvider';
 import { useRouter } from 'next/router';
 import {AgregarLibroForm} from '../../components/form/AgregarLibroForm';
+import {AgregarUsuarioForm} from '../../components/form/AgregarUsuarioForm';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -17,23 +18,36 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 export const BibliotecarioNavbar = () => {
 
     const {logout, isLogged}=useAuthContext();
-    const [open, setOpen] = useState(false);
+    const [openBookForm, setOpenBookForm] = useState(false);
+    const [openUserForm, setOpenUserForm] = useState(false);    
+    const [search, setSearch] = useState('');
     const router=useRouter();
     
  
     
 
     const handleOpen = () => {
-        setOpen(true);
+        setOpenBookForm(true);
     }
 
     const handleClose = () => {
-        setOpen(false);
+        setOpenBookForm(false);
+        setOpenUserForm(false);
+        
     }
 
-    const handleSubmit = (e) => {
+    const handleOpenUser = () => {
+        setOpenBookForm(false);
+        setOpenUserForm(true);
+    }
+
+    
+    
+
+    const handleSearch = (e) => {
         e.preventDefault();
-        console.log('submit');
+        console.log('search', search);
+        router.push('/admin/search/'+search);
     }
 
     const onLogout=()=>{
@@ -57,14 +71,20 @@ export const BibliotecarioNavbar = () => {
                             </NextLink>
 
                             <Box flex={1}></Box>
-                            <Input placeholder="Buscar libro" /*inputProps={''}>*/ sx={{width:'40%'}}/>
+                            
+                                <Input  onChange={(e)=>setSearch(e.target.value)} value={search} onKeyUp={(e)=>e.code==='Enter'?handleSearch(e):undefined} placeholder="Buscar libro" /*inputProps={''}>*/ sx={{width:'40%'}}/>
+
+                            
                             <Box flex={1}></Box>
 
 
                             <Button sx={{mr:3}} onClick={handleOpen} >
                                 Agregar libro
                             </Button>
-                            <Button sx={{mr:3}} onClick={(e)=>{router.push('/bibliotecarioPage')}}>
+                            <Button sx={{mr:3}} onClick={handleOpenUser} >
+                                Agregar usuario
+                            </Button>
+                            <Button sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
                                 Libros
                             </Button>
                             <Button sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
@@ -80,13 +100,15 @@ export const BibliotecarioNavbar = () => {
                     </AppBar>
         
                      <Modal
-                        open={open}
+                        open={openBookForm||openUserForm}
                         onClose={handleClose}
                         aria-labelledby="Agregar Libro"
                         aria-describedby="modal-modal-description"
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
-                       <AgregarLibroForm/>
+                       {openBookForm?(<AgregarLibroForm/>):(<AgregarUsuarioForm/>)}
+                       
+                      
                     </Modal>
      </>
     )

@@ -16,6 +16,7 @@ const libroSchema = new Schema({
     posicion:{type:Number, required: true},
     tags:[{type:String}],
     prestado:{type:Boolean, default:false},
+    prestamo:{ type: Schema.Types.ObjectId, ref: 'Prestamo' },
 
 },{
     timestamps:true

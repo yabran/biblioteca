@@ -53,6 +53,11 @@ const reducer = (state, action) => {
                 ...state,
                 books: state.books.map(book => book.id === action.payload._id ? {...book, prestado:true} : book)
             }
+        case 'Devolver_Libro':
+            return{
+                ...state,
+                books: state.books.map(book => book.id === action.payload._id ? {...book, prestado:false} : book)
+            }
 
         default:
             return state;
@@ -101,6 +106,7 @@ const BookProvider = ({children}) => {
             try {
                 const {data} = await bibliotecaApi.post('/prestamos/prestarLibro', prestamo);
                 
+                
                 data.prestado=true;
                 
                 const book={
@@ -117,6 +123,22 @@ const BookProvider = ({children}) => {
            
         }
 
+        const devolverLibro=async(id)=>{
+            try {
+                const { data}= await bibliotecaApi.get(`/prestamos/devolverLibro?id=${id}`);   
+                console.log('data del servidor',data)
+                data.prestado=false;
+                const booksMod=dispatch({type: 'Devolver_Libro', payload: data});
+                
+
+            } catch (error) {
+                console.log('Error en servidor:', error)
+                return error;
+            }
+                
+            
+        }
+
 
         return(
             <BookContext.Provider value={{
@@ -128,6 +150,7 @@ const BookProvider = ({children}) => {
                 editBook,
                 getBookById,
                 prestarLibro,
+                devolverLibro,
             }}>
             
                 {children}

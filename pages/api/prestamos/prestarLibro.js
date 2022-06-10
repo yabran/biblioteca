@@ -19,15 +19,24 @@ export default function (req, res) {
 
 
 const guardarPrestamo = async (req, res) => {
-    await db.connect();
-    const prestamo = req.body;
     
-    const prestamoGuardado = await Prestamo.create(prestamo);
-    const libro=await Libro.findOneAndUpdate({_id:prestamo.idLibro}, { prestado: true });
-    prestamoGuardado.save();
-    await db.disconnect();
+    try {
+        await db.connect();
+        const prestamo = req.body;
+        console.log(prestamo)
+        
+        const prestamoGuardado = await Prestamo.create(prestamo);
+        const libro=await Libro.findOneAndUpdate({_id:prestamo.idLibro}, { prestado: true, prestamo:prestamoGuardado._id });
+        prestamoGuardado.save();
+        await db.disconnect();
+        
     
-
-    return res.status(200).json(libro);
+        return res.status(200).json(libro);
+        
+    } catch (error) {
+        return res.status(500).json({error})
+    }
+        
+    
     
 }

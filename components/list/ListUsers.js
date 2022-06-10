@@ -1,42 +1,48 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { DataGrid, esES} from '@mui/x-data-grid';
 import { Button, Grid, Alert, Modal } from '@mui/material';
-import { useBookContext } from '../../context/libro/BookProvider';
-import { AgregarLibroForm } from '../form/AgregarLibroForm';
+
+
+import { useAuthContext } from '../../context/auth/AuthenticationProvider';
+import { AgregarUsuarioForm } from '../form/AgregarUsuarioForm';
 
 
 
 
 const ListUsers=()=> {
 
-    const {books}= useBookContext();
+    
 
     const alert = useRef(<></>);
 
     const [open, setOpen] = useState(false);
     const [editSelected, setEditSelected] = useState(false);
-    const [selectedBookId, setSelectedBookId] = useState('');
+    const [selectedUserId, setSelectedUserId] = useState('');
 
-    const {removeBook} =useBookContext()
+    const {users, getUsers} =useAuthContext();
+
+    useEffect(() => {
+        getUsers()
+      }, [])
 
     const columns = [
         { field: 'indice', headerName: 'Indice', width: 70 },
-        { field: 'nombre', headerName: 'Nombre', width: 300 },
-        { field: 'apellido', headerName: 'Apellido', width: 300 },
+        { field: 'nombre', headerName: 'Nombre', width: 200 },
+        { field: 'apellido', headerName: 'Apellido', width: 200 },
         { field: 'username', headerName: 'Nombre de usuario', width: 150 },
         { field: 'password', headerName: 'Contraseña', width: 150 },
-        { field: 'rol', headerName: 'Rol', width: 100 },
+        { field: 'rol', headerName: 'Rol', width: 200 },
         
         { field: 'acciones', headerName: 'Acciones', width: 300, 
-            renderCell:(book)=>{
+            renderCell:(user)=>{
                 
                 return (
                     <>
-                        <Button sx={{marginRight:'10px'}} variant="contained" color="primary" onClick={(e)=>onEdit(book.row.id, e)}>
+                        <Button sx={{marginRight:'10px'}} variant="contained" color="primary" onClick={(e)=>onEdit(user.row.id, e)}>
                             Editar
                         </Button>
-                        <Button variant="contained" color="primary" value={book.row}onClick={(e)=>onDelete(book.row.id ,e)}>
+                        <Button variant="contained" color="primary" value={user.row}onClick={(e)=>onDelete(user.row.id ,e)}>
                             Eliminar
                         </Button>
                     
@@ -49,16 +55,15 @@ const ListUsers=()=> {
         
     ];
 
-    const rows= books.map((book, index)=>{
+    const rows= users?.map((user, index)=>{
         return {
-            id: book._id,
+            id: user._id,
             indice:index+1,
-            titulo:book.titulo,
-            autor:book.autor,
-            editorial:book.editorial,
-            genero:book.genero,
-            estante:book.estante,
-            posicion:book.posicion,
+            nombre:user.nombre,
+            apellido:user.apellido,
+            username:user.username,
+            rol:user.rol,
+            password:user.password,
             
         }
     })
@@ -76,7 +81,7 @@ const ListUsers=()=> {
        alert.current=(
         <Grid  sx={{height:'200px', width:'350px',}}>
             <Alert variant="filled" severity="warning" sx={{borderRadius:'0px'}}>
-                ¿Esta seguro que desea eliminar el libro?
+                ¿Esta seguro que desea eliminar el usuario?
             </Alert>
             <Alert
                severity='warning'
@@ -121,7 +126,7 @@ const ListUsers=()=> {
     }
 
     const onEdit=(id, e)=>{
-        setSelectedBookId(id)
+        setSelectedUserId(id)
         setEditSelected(true)
         setOpen(true)
     }
@@ -134,12 +139,12 @@ const ListUsers=()=> {
       <Modal
                         open={open}
                         onClose={handleClose}
-                        aria-labelledby="Agregar Libro"
+                        aria-labelledby="Agregar Usuario"
                         aria-describedby="modal-modal-description"
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
           
-            {!editSelected? alert.current: <AgregarLibroForm edit bookId={selectedBookId} />}
+            {!editSelected? alert.current: <AgregarUsuarioForm edit userId={selectedUserId} />}
           
       </Modal>
       
