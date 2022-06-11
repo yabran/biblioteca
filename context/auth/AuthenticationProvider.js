@@ -87,7 +87,7 @@ const AuthenticationProvider = ({children}) => {
             return null;
         }
         
-    
+     
     }
 
     const logout=async()=>{
@@ -115,7 +115,7 @@ const AuthenticationProvider = ({children}) => {
       }
 
       const addUser=async(user)=>{
-          console.log(user)
+          
         try {
             const {data}=await bibliotecaApi.post('/user/add', user);
             return data;

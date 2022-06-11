@@ -5,7 +5,7 @@ import { Button, Grid, Alert, Modal } from '@mui/material';
 
 
 import { useAuthContext } from '../../context/auth/AuthenticationProvider';
-import { AgregarUsuarioForm } from '../form/AgregarUsuarioForm';
+import  AgregarUsuarioForm  from '../form/AgregarUsuarioForm';
 
 
 
@@ -14,7 +14,7 @@ const ListUsers=()=> {
 
     
 
-    const alert = useRef(<></>);
+    const alert = useRef(<div></div>);
 
     const [open, setOpen] = useState(false);
     const [editSelected, setEditSelected] = useState(false);
@@ -23,8 +23,12 @@ const ListUsers=()=> {
     const {users, getUsers} =useAuthContext();
 
     useEffect(() => {
-        getUsers()
-      }, [getUsers])
+        async function fetchData() {
+            await getUsers()
+
+        }
+        fetchData()
+      }, [])
 
     const columns = [
         { field: 'indice', headerName: 'Indice', width: 70 },

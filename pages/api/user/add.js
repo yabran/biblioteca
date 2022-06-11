@@ -2,7 +2,7 @@ import { db } from "../../../database";
 import { Usuario } from "../../../models";
 
 export default function handler(req, res) {
-    switch (req.method){
+    switch (req.method){ 
         case 'POST':
             return addUser(req, res);
         default:

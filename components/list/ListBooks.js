@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import { DataGrid, esES} from '@mui/x-data-grid';
 import { Button, Grid, Alert, Modal } from '@mui/material';
 import { useBookContext } from '../../context/libro/BookProvider';
-import { AgregarLibroForm } from '../form/AgregarLibroForm';
+import  AgregarLibroForm  from '../form/AgregarLibroForm';
 
 
 
@@ -14,7 +14,7 @@ const ListBooks=({search=null})=> {
 
     const {books, getAllBooks}= useBookContext();
 
-    const alert = useRef(<></>);
+    const alert = useRef(<div></div>);
 
     const [open, setOpen] = useState(false);
     const [editSelected, setEditSelected] = useState(false);
@@ -24,8 +24,12 @@ const ListBooks=({search=null})=> {
     const {removeBook} =useBookContext()
 
     useEffect(() => {
-      getAllBooks()
-    }, [getAllBooks])
+        async function fetchData() {
+            
+            await getAllBooks()
+        }
+        fetchData()
+    }, [])
     
 
     const columns = [

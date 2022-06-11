@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 
 import {  Box, Button, Grid, Typography, TextField, Autocomplete, Divider, Chip } from '@mui/material';
 import { useBookContext } from '../../context/libro/BookProvider';
 
 
 
-export const AgregarLibroForm=({ edit=false, bookId=null})=> {
-  
+function AgregarLibroForm(props, ref) {
+    
+    const { edit=false, bookId=null}=props;
     const [formData, setFormData] = useState(initialState())
     const {addBook, editBook, getBookById} =useBookContext()
     const [newTagValue, setNewTagValue] = useState('');
@@ -67,7 +68,7 @@ export const AgregarLibroForm=({ edit=false, bookId=null})=> {
   
   
     return (
-    <Box sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'700px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+    <Box ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'700px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
     <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
         {edit?'Editar Libro':'Cargar libro'}
     </Typography>
@@ -239,3 +240,5 @@ const initialState =()=> {
         tags:[],
     })
 }
+
+export default forwardRef(AgregarLibroForm)

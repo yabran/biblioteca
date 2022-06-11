@@ -8,8 +8,8 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useAuthContext } from '../../context/auth/AuthenticationProvider';
 import { useRouter } from 'next/router';
-import {AgregarLibroForm} from '../../components/form/AgregarLibroForm';
-import {AgregarUsuarioForm} from '../../components/form/AgregarUsuarioForm';
+import AgregarLibroForm from '../../components/form/AgregarLibroForm';
+import AgregarUsuarioForm from '../../components/form/AgregarUsuarioForm';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -45,7 +45,7 @@ export const BibliotecarioNavbar = () => {
     
 
     const handleSearch = (e) => {
-        e.preventDefault();
+        
         console.log('search', search);
         router.push('/admin/search/'+search);
     }
@@ -106,7 +106,9 @@ export const BibliotecarioNavbar = () => {
                         aria-describedby="modal-modal-description"
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
-                       {openBookForm?(<AgregarLibroForm/>):(<AgregarUsuarioForm/>)}
+                        <>
+                         {openBookForm?(<AgregarLibroForm/>):(<AgregarUsuarioForm/>)}
+                        </>
                        
                       
                     </Modal>

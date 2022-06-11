@@ -1,15 +1,19 @@
-import { Autocomplete, Box, Button, Divider, Grid, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+
+import { useRouter } from 'next/router'
+
+import { Autocomplete, Box, Button, Divider, Grid, TextField, Typography } from '@mui/material'
 import { useAuthContext } from '../../context/auth/AuthenticationProvider'
 
 
 
 
 
-export const AgregarUsuarioForm=({ edit=false, userId=null})=> {
-
+function AgregarUsuarioForm(props, ref) {
+    const { edit=false, userId=null}=props;
     const [formData, setFormData] = useState(initialState())
     const {addUser, getUser, editUser} =useAuthContext()
+    const router = useRouter()
 
     useEffect(() => {
         if (edit) {
@@ -37,7 +41,10 @@ export const AgregarUsuarioForm=({ edit=false, userId=null})=> {
     const handleSubmit = (e)=>{
         if(!edit){
 
-            addUser(formData)
+            addUser(formData).then(user=>{
+                router.replace('/admin/usuarios')
+            })
+
         }else{
             editUser(formData, userId)
         }
@@ -50,7 +57,7 @@ export const AgregarUsuarioForm=({ edit=false, userId=null})=> {
   
   
     return (
-    <Box sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'580px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+    <Box ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'580px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
     <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
         {edit?'Editar usuario':'Crear nuevo usuario'}
     </Typography>
@@ -114,7 +121,7 @@ export const AgregarUsuarioForm=({ edit=false, userId=null})=> {
                                 id="combo-box-demo"
                                 options={['Alumno', 'Biblioteca']}
                                 fullWidth
-                                value={edit?formData.rol:'Bibliotecario'}
+                                value={edit?formData.rol:'Alumno'}
                                 onChange={(e,v)=>{setFormData({...formData, rol:v==='Biblioteca'?'Bibliotecario':'Alumno'})}}
                                 name='rol'
                                 renderInput={(params) => <TextField {...params} label="Rol" />}
@@ -169,7 +176,9 @@ const initialState =()=> {
         apellido:'',
         password:'',
         username:'',
-        rol:'',
+        rol:'ALumno',
        
     })
 }
+
+export default React.forwardRef(AgregarUsuarioForm)
