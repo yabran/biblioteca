@@ -3,7 +3,7 @@ import { Usuario } from "../../../models";
 import { jwtUtils } from "../../../utils";
 
 
-export default function (req, res) {
+export default function handler (req, res) {
     switch (req.method) {
         case 'GET':
             return validarToken(req, res);

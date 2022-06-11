@@ -4,7 +4,7 @@ import { Libro, Prestamo } from "../../../models";
 
 
 
-export default function (req, res) {
+export default function handler(req, res) {
     switch (req.method) {
         case 'POST':
             return guardarPrestamo(req, res);

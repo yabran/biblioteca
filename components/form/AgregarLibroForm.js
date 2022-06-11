@@ -23,7 +23,7 @@ export const AgregarLibroForm=({ edit=false, bookId=null})=> {
         }
     
       
-    }, [])
+    }, [getBookById, edit, bookId])
     
 
 

@@ -5,7 +5,7 @@ import {Libro} from "../../../models";
 
 
 
-export default function (req, res) {
+export default function handler (req, res) {
     switch (req.method) {
         case 'GET':
             return getBooks(req, res);

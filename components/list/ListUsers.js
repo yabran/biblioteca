@@ -24,7 +24,7 @@ const ListUsers=()=> {
 
     useEffect(() => {
         getUsers()
-      }, [])
+      }, [getUsers])
 
     const columns = [
         { field: 'indice', headerName: 'Indice', width: 70 },

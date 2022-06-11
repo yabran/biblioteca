@@ -2,7 +2,7 @@ import { getListSubheaderUtilityClass } from "@mui/material";
 import { db } from "../../../database";
 import { Usuario } from "../../../models";
 
-export default function (req, res) {
+export default function handler(req, res) {
     switch (req.method) {
         case 'GET':
             return getUser (req, res);

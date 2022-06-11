@@ -2,7 +2,7 @@ import {Usuario} from '../../../models';
 import {db} from '../../../database';
 import { jwtUtils } from '../../../utils';
 
-export default function (req, res) {
+export default function handler (req, res) {
     
     switch (req.method) {
         case 'POST':

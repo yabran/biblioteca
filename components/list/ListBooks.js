@@ -25,7 +25,7 @@ const ListBooks=({search=null})=> {
 
     useEffect(() => {
       getAllBooks()
-    }, [])
+    }, [getAllBooks])
     
 
     const columns = [

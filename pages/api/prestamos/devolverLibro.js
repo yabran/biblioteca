@@ -1,7 +1,7 @@
 import {Prestamo, Libro} from '../../../models'
 import {db} from '../../../database'
 
-export default function (req, res) {
+export default function handler(req, res) {
     switch (req.method) {
         case 'GET':
             return devolverLibro(req, res);

@@ -11,7 +11,7 @@ const BibliotecarioPage = ()=>{
     useEffect(() => {
         checkToken();
     
-    }, [])
+    }, [checkToken])
     
 
     return(

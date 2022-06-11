@@ -22,7 +22,7 @@ export const AgregarUsuarioForm=({ edit=false, userId=null})=> {
         }
     
       
-    }, [])
+    }, [getUser, edit, userId])
     
 
     const onChangeData = (e)=>{
