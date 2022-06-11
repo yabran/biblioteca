@@ -145,6 +145,7 @@ const ListBooks=({search=null})=> {
         
         removeBook(id)
         setOpen(false)
+        router.reload()
     }
 
     const onCancelDelete=()=>{

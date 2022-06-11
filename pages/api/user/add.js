@@ -13,9 +13,9 @@ export default function handler(req, res) {
 
 async function addUser(req, res) {
     try {
-        console.log('entre a add user')
+        
         const user=req.body;
-        console.log('valor de user',user)
+        
         await db.connect();
         const newUser=await Usuario.create(user);
         await db.disconnect()

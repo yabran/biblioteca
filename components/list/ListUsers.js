@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { DataGrid, esES} from '@mui/x-data-grid';
 import { Button, Grid, Alert, Modal } from '@mui/material';
 
-
+import {useRouter} from 'next/router'
 import { useAuthContext } from '../../context/auth/AuthenticationProvider';
 import  AgregarUsuarioForm  from '../form/AgregarUsuarioForm';
 
@@ -19,8 +19,9 @@ const ListUsers=()=> {
     const [open, setOpen] = useState(false);
     const [editSelected, setEditSelected] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState('');
+    const router= useRouter();
 
-    const {users, getUsers} =useAuthContext();
+    const {users, getUsers, deleteUser} =useAuthContext();
 
     useEffect(() => {
         async function fetchData() {
@@ -116,8 +117,10 @@ const ListUsers=()=> {
 
     const onAcceptDelete=(id,e)=>{
         
-        removeBook(id)
+        deleteUser(id)
         setOpen(false)
+        router.reload()
+        
     }
 
     const onCancelDelete=()=>{

@@ -23,7 +23,7 @@ const guardarPrestamo = async (req, res) => {
     try {
         await db.connect();
         const prestamo = req.body;
-        console.log(prestamo)
+        
         
         const prestamoGuardado = await Prestamo.create(prestamo);
         const libro=await Libro.findOneAndUpdate({_id:prestamo.idLibro}, { prestado: true, prestamo:prestamoGuardado._id });

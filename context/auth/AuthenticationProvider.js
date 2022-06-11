@@ -155,6 +155,18 @@ const AuthenticationProvider = ({children}) => {
             return null;
         }
       }
+
+        const deleteUser=async(id)=>{
+            console.log(id)
+            try {
+                const {data}=await bibliotecaApi.delete('/user/remove?id='+id,{
+                    method: 'DELETE',
+                });
+                return data;
+            } catch (error) {
+                return null;
+            }
+        }
       
 
 
@@ -170,7 +182,8 @@ const AuthenticationProvider = ({children}) => {
             addUser,
             editUser,
             getUser,
-            getUsers
+            getUsers,
+            deleteUser
             
 
             

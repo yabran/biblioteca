@@ -15,7 +15,7 @@ import {Libro} from '../../../models'
 
 const PrestamoLibroPage=({libros})=> {
 
-   console.log(libros)
+   
 
     
   return (
@@ -32,7 +32,7 @@ const PrestamoLibroPage=({libros})=> {
 
 export const getServerSideProps = async (ctx) => {
     const {word}=ctx.query;
-    console.log(word)
+    
     await db.connect();
     const libros = JSON.parse( JSON.stringify( await Libro.find({
         $or:[
@@ -46,7 +46,7 @@ export const getServerSideProps = async (ctx) => {
     
     })));
     await db.disconnect();
-    console.log(libros)
+    
     
     return {
         props: {
