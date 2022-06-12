@@ -5,6 +5,7 @@ import { DataGrid, esES} from '@mui/x-data-grid';
 import { Button, Grid, Alert, Modal } from '@mui/material';
 import { useBookContext } from '../../context/libro/BookProvider';
 import  AgregarLibroForm  from '../form/AgregarLibroForm';
+import { minWidth } from '@mui/system';
 
 
 
@@ -33,27 +34,27 @@ const ListBooks=({search=null})=> {
     
 
     const columns = [
-        { field: 'indice', headerName: 'Indice', width: 70 },
-        { field: 'titulo', headerName: 'Titulo del libro', width: 300 },
-        { field: 'autor', headerName: 'Autor', width: 300 },
-        { field: 'editorial', headerName: 'Editorial', width: 150 },
-        { field: 'genero', headerName: 'Genero', width: 150 },
-        { field: 'estante', headerName: 'Estante', width: 100 },
-        { field: 'posicion', headerName: 'Posicion', width: 100 },
-        { field: 'acciones', headerName: 'Acciones', width: 500, 
+        { field: 'indice', headerName: 'Indice', width:100, align:'center', },
+        { field: 'titulo', headerName: 'Titulo del libro', width:260,  },
+        { field: 'autor', headerName: 'Autor', width: 260,  },
+        { field: 'editorial', headerName: 'Editorial', width: 150,  },
+        { field: 'genero', headerName: 'Genero', width: 150,  },
+        { field: 'estante', headerName: 'Estante', width: 100, align:'center' },
+        { field: 'posicion', headerName: 'Posicion', width: 100, align:'center' },
+        { field: 'acciones', headerName: 'Acciones', width: 500, align:'center',
             renderCell:(book)=>{
                 
                 return (
                     <>
                         {book.row.prestado
                             ?(
-                                <Button sx={{marginRight:'10px'}} variant="contained" color="primary" value={book.row}onClick={()=>retirarLibro(book.row.id)}>
+                                <Button sx={{marginRight:'10px', minWidth:'140px'}} variant="contained" color="primary" value={book.row}onClick={()=>retirarLibro(book.row.id)}>
                                     Info del prestamo
                                 </Button>
 
                             ):
                             (
-                                <Button sx={{marginRight:'10px'}} variant="contained" color="primary" value={book.row}onClick={()=>retirarLibro(book.row.id)}>
+                                <Button sx={{marginRight:'10px', minWidth:'140px'}} variant="contained" color="primary" value={book.row}onClick={()=>retirarLibro(book.row.id)}>
                                     Prestar Libro
                                 </Button>
                             
@@ -181,13 +182,16 @@ const ListBooks=({search=null})=> {
           
       </Modal>
       
-      <Grid item xs={12} sx={{ height:650, width: '100%', display:'flex', justifyContent:'center' }}>
+      <Grid item xs={14} sx={{ marginLeft:'30px', marginRight:'30px', marginTop:'30px', height:650, width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
           <DataGrid 
+              
               rows={ rows }
               columns={ columns }
               pageSize={ 10 }
               rowsPerPageOptions={ [10] }
               localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+              
+              
           />
       
         </Grid>
