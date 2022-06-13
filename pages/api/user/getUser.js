@@ -20,4 +20,4 @@ async function getUser (req, res) {
     const user= await Usuario.findById(id);
     await db.disconnect();
     return res.status(200).json(user);
-}
+} 

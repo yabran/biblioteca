@@ -43,4 +43,4 @@ export const disconnect = async() => {
     mongoConnection.isConnected = 0;
 
     console.log('Desconectado de MongoDB');
-}
+} 

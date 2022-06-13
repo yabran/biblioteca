@@ -111,7 +111,7 @@ const AuthenticationProvider = ({children}) => {
 
         }else{
             logout();
-        }
+        } 
       }
 
       const addUser=async(user)=>{
