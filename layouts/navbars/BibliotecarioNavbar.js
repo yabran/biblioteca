@@ -80,13 +80,13 @@ export const BibliotecarioNavbar = () => {
 
                            <Box id='box-nav'>
 
-                            <Button className='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
+                            <Button id='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
                                     Libros
                             </Button>
-                            <Button className='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
+                            <Button id='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
                                 Usuarios
                             </Button>
-                            <Button  className='button-navbar' sx={{mr:3, borderRadius:'0px !important'}} onClick={onLogout}>
+                            <Button  id='button-navbar' sx={{mr:3, borderRadius:'0px !important'}} onClick={onLogout}>
                                 Cerrar Sesión
                             </Button>
                            </Box>
