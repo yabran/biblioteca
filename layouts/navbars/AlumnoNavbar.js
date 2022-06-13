@@ -64,7 +64,7 @@ export const AlumnoNavbar = () => {
                             <NextLink href='/' passHref>
                                 <Link display='flex' alignItems='center'>
                                     <Typography variant='h6'>Biblioteca |</Typography>
-                                    <Typography sx={{ ml: 0.5 }}>Escuela</Typography>
+                                    <Typography sx={{ ml: 0.5 }}>Escuela Primaria N°56</Typography>
                                 </Link>  
                             </NextLink>
 

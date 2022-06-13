@@ -62,32 +62,35 @@ export const BibliotecarioNavbar = () => {
  return(
      <>
                     <AppBar>
-                        <Toolbar>
+                        <Toolbar id='toolbar'>
                             <NextLink href='/' passHref>
                                 <Link display='flex' alignItems='center'>
                                     <Typography variant='h6'>Biblioteca |</Typography>
-                                    <Typography sx={{ ml: 0.5 }}>Escuela</Typography>
+                                    <Typography sx={{ ml: 0.5 }}>Escuela Primaria N°56</Typography>
                                 </Link>  
                             </NextLink>
 
                             <Box flex={1}></Box>
                             
-                                <Input  onChange={(e)=>setSearch(e.target.value)} value={search} onKeyUp={(e)=>e.code==='Enter'?handleSearch(e):undefined} placeholder="Buscar libro" /*inputProps={''}>*/ sx={{width:'40%'}}/>
+                                <Input id='nav-search'  onChange={(e)=>setSearch(e.target.value)} value={search} onKeyUp={(e)=>e.code==='Enter'?handleSearch(e):undefined} placeholder="Buscar libro" /*inputProps={''}>*/ sx={{width:'40%'}}/>
 
                             
                             <Box flex={1}></Box>
 
 
-                           
-                            <Button sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
-                                Libros
+                           <Box id='box-nav'>
+
+                            <Button className='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
+                                    Libros
                             </Button>
-                            <Button sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
+                            <Button className='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
                                 Usuarios
                             </Button>
-                            <Button sx={{mr:3}} onClick={onLogout}>
+                            <Button className='button-navbar' sx={{mr:3}} onClick={onLogout}>
                                 Cerrar Sesión
                             </Button>
+                           </Box>
+                                
 
 
                         </Toolbar>
