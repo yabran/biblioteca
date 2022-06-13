@@ -151,7 +151,7 @@ const ListUsers=()=> {
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
           
-            {!editSelected? alert.current: <AgregarUsuarioForm edit userId={selectedUserId} />}
+            {!editSelected? alert.current: <AgregarUsuarioForm edit userId={selectedUserId} handleClose={handleClose} />}
           
       </Modal>
       

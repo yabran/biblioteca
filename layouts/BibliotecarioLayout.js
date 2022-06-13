@@ -53,16 +53,16 @@ export const BibliotecarioLayout = ({ children, section }) => {
 
             </Grid>
             {section === 'libros' &&
-            <Grid columns={14} sx={{display:'flex', justifyContent:'end' ,alignItems:'center', width:'95%'}}>
-              <Button onClick={handleOpen} sx={{marginTop:'20px', border:'2px solid cornflowerblue', borderRadius:0, color:'white', fontSize:'15px', backgroundColor:'cornflowerblue', padding:'5px 20px', ":hover":{color:'cornflowerblue', backgroundColor:'white'}}}>
+            <Grid columns={16} sx={{display:'flex', justifyContent:'flex-end' ,alignItems:'center',width:'100%' }}>
+              <Button onClick={handleOpen} sx={{width:'100%',marginTop:'20px', border:'2px solid cornflowerblue', borderRadius:0, color:'white', fontSize:'15px', backgroundColor:'cornflowerblue', padding:'5px 20px', ":hover":{color:'cornflowerblue', backgroundColor:'white'}}}>
                 Agregar Libro
               </Button>
             </Grid>
             }
 
             {section === 'usuarios' &&
-            <Grid columns={14} sx={{display:'flex', justifyContent:'end' ,alignItems:'center', width:'95%'}}>
-              <Button onClick={handleOpenUser} sx={{marginTop:'20px', border:'2px solid cornflowerblue', borderRadius:0, color:'white', fontSize:'15px', backgroundColor:'cornflowerblue', padding:'5px 20px', ":hover":{color:'cornflowerblue', backgroundColor:'white'}}}>
+            <Grid columns={14} sx={{display:'flex', justifyContent:'end' ,alignItems:'center', width:'100%'}}>
+              <Button onClick={handleOpenUser} sx={{width:'100%', marginTop:'20px', border:'2px solid cornflowerblue', borderRadius:0, color:'white', fontSize:'15px', backgroundColor:'cornflowerblue', padding:'5px 20px', ":hover":{color:'cornflowerblue', backgroundColor:'white'}}}>
                 Agregar usuario
               </Button>
             </Grid>
@@ -81,7 +81,7 @@ export const BibliotecarioLayout = ({ children, section }) => {
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
                         <>
-                         {openBookForm?(<AgregarLibroForm/>):(<AgregarUsuarioForm/>)}
+                         {openBookForm?(<AgregarLibroForm handleClose={handleClose} />):(<AgregarUsuarioForm handleClose={handleClose}/>)}
                         </>
                        
                       

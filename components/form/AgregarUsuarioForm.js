@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 
-import { Autocomplete, Box, Button, Divider, Grid, TextField, Typography } from '@mui/material'
+import { Autocomplete, Box, Button, Divider, Grid, Icon, TextField, Typography } from '@mui/material'
 import { useAuthContext } from '../../context/auth/AuthenticationProvider'
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
 
 
 function AgregarUsuarioForm(props, ref) {
-    const { edit=false, userId=null}=props;
+    const { edit=false, userId=null, handleClose}=props;
     const [formData, setFormData] = useState(initialState())
     const {addUser, getUser, editUser} =useAuthContext()
     const router = useRouter()
@@ -61,6 +62,9 @@ function AgregarUsuarioForm(props, ref) {
         <Grid item xs={14} sm={6} ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'100%', height:'580px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
         <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
             {edit?'Editar usuario':'Crear nuevo usuario'}
+            <Icon onClick={handleClose} style={{cursor:'pointer', float:'right', color:'cornflowerblue', height:'100%', marginRight:'15px'}}>
+                <CloseIcon />
+            </Icon>
         </Typography>
         <hr/>
         <form onSubmit={handleSubmit} noValidate>

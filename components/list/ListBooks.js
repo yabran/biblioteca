@@ -191,7 +191,7 @@ const ListBooks=({search=null, alumno=false})=> {
                         sx={{ height:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}
                     >
           
-            {!editSelected? alert.current: <AgregarLibroForm edit bookId={selectedBookId} />}
+            {!editSelected? alert.current: <AgregarLibroForm edit bookId={selectedBookId} handleClose={handleClose}/>}
           
       </Modal>
       

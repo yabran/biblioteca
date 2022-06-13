@@ -1,13 +1,14 @@
 import React, { forwardRef, useEffect, useState } from 'react'
 
-import {  Box, Button, Grid, Typography, TextField, Autocomplete, Divider, Chip } from '@mui/material';
+import {  Box, Button, Grid, Typography, TextField, Autocomplete, Divider, Chip, Icon } from '@mui/material';
 import { useBookContext } from '../../context/libro/BookProvider';
+import CloseIcon from '@mui/icons-material/Close';
 
  
 
 function AgregarLibroForm(props, ref) {
     
-    const { edit=false, bookId=null}=props;
+    const { edit=false, bookId=null, handleClose}=props;
     const [formData, setFormData] = useState(initialState())
     const {addBook, editBook, getBookById} =useBookContext()
     const [newTagValue, setNewTagValue] = useState('');
@@ -73,7 +74,11 @@ console.log(formData)
         <Grid item xs={14} sm={6} ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'100%', height:'700px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
         <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
             {edit?'Editar Libro':'Cargar libro'}
+            <Icon onClick={handleClose} style={{cursor:'pointer', float:'right', color:'cornflowerblue', height:'100%', marginRight:'15px'}}>
+                <CloseIcon />
+            </Icon>
         </Typography>
+       
         <hr/>
         <form onSubmit={handleSubmit} noValidate>
 
