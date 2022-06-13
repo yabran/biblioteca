@@ -97,7 +97,7 @@ const BookProvider = ({children}) => {
             }
 
         const getBookById = async (id) => {
-            const {data} = await bibliotecaApi.get(`/books/${id}`);
+            const {data}=await bibliotecaApi.get('/books/getBook?id='+id);
             return data;
         }
 

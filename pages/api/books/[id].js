@@ -16,7 +16,7 @@ export default function handler(req, res) {
             })
     }
 
-}
+} 
 
 
 async function getBookById(req, res) {
@@ -24,6 +24,7 @@ async function getBookById(req, res) {
         await db.connect();
         const {id}=(req.query)
         const book= await Libro.findById(id);
+        console.log(book)
         await db.disconnect();
         return res.status(200).json(JSON.parse(JSON.stringify(book)));
         
