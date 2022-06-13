@@ -25,7 +25,7 @@ async function getBookById(req, res) {
         const {id}=(req.query)
         const book= await Libro.findById(id);
         await db.disconnect();
-        return res.status(200).json(book);
+        return res.status(200).json(JSON.parse(JSON.stringify(book)));
         
     } catch (error) {
         return res.status(500).json({'message':'Error al obtener el libro'});
