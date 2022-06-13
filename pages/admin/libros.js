@@ -5,6 +5,7 @@ import { jwtUtils } from "../../utils";
 import ListBooks from "../../components/list/ListBooks";
 import { useAuthContext } from "../../context/auth/AuthenticationProvider";
 import { BibliotecarioLayout } from "../../layouts/BibliotecarioLayout";
+import { Button } from "@mui/material";
 
 const Libros = ()=>{
 
@@ -18,8 +19,9 @@ const Libros = ()=>{
 
     return(
         <div>
-            <BibliotecarioLayout>
-                <ListBooks/>
+            <BibliotecarioLayout section={'libros'}>
+                
+                <ListBooks />
             </BibliotecarioLayout>
             
         </div>

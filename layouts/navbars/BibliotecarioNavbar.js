@@ -78,12 +78,7 @@ export const BibliotecarioNavbar = () => {
                             <Box flex={1}></Box>
 
 
-                            <Button sx={{mr:3}} onClick={handleOpen} >
-                                Agregar libro
-                            </Button>
-                            <Button sx={{mr:3}} onClick={handleOpenUser} >
-                                Agregar usuario
-                            </Button>
+                           
                             <Button sx={{mr:3}} onClick={(e)=>{router.push('/admin/libros')}}>
                                 Libros
                             </Button>

@@ -155,7 +155,7 @@ const ListUsers=()=> {
           
       </Modal>
       
-      <Grid item xs={12} sx={{ height:650, width: '80%', display:'flex', justifyContent:'center' }}>
+      <Grid item xs={14} sx={{ height:650, width: '90%', display:'flex', justifyContent:'center' }}>
           <DataGrid 
               rows={ rows }
               columns={ columns }

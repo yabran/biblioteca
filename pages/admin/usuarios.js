@@ -12,7 +12,7 @@ const UsuariosPage = ()=>{
 
     return(
         <div>
-            <BibliotecarioLayout>
+            <BibliotecarioLayout section='usuarios'>
                 <ListUsers/>
             </BibliotecarioLayout>
             

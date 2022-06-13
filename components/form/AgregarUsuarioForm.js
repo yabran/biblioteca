@@ -176,7 +176,7 @@ const initialState =()=> {
         apellido:'',
         password:'',
         username:'',
-        rol:'ALumno',
+        rol:'Alumno',
        
     })
 }

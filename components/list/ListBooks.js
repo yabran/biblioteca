@@ -195,7 +195,8 @@ const ListBooks=({search=null, alumno=false})=> {
           
       </Modal>
       
-      <Grid item xs={14} sx={{ marginLeft:'30px', marginRight:'30px', marginTop:'30px', height:650, width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+      <Grid item xs={14} sx={{ marginLeft:'30px', marginRight:'30px', height:650, width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+          
           <DataGrid 
               
               rows={ rows }
