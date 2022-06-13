@@ -35,6 +35,7 @@ a {
       position: absolute;
       display: block;
       background-color: white;
+      border-radius: 0;
       
     }
 
