@@ -53,7 +53,7 @@ export const BibliotecarioLayout = ({ children, section }) => {
 
             </Grid>
             {section === 'libros' &&
-            <Grid columns={14} sx={{display:'flex', justifyContent:'end' ,alignItems:'center', width:'98%'}}>
+            <Grid columns={14} sx={{display:'flex', justifyContent:'end' ,alignItems:'center', width:'95%'}}>
               <Button onClick={handleOpen} sx={{marginTop:'20px', border:'2px solid cornflowerblue', borderRadius:0, color:'white', fontSize:'15px', backgroundColor:'cornflowerblue', padding:'5px 20px', ":hover":{color:'cornflowerblue', backgroundColor:'white'}}}>
                 Agregar Libro
               </Button>
