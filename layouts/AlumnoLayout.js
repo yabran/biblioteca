@@ -27,7 +27,7 @@ export const AlumnoLayout = ({ children }) => {
                 </nav>
 
             </Grid>
-            <Grid columns={16} sx={{backgroundImage:'url("/assets/ui/fantasia2.jpg")', backgroundSize:'cover',backgroundPosition:'center', height:'300px', marginTop:'5px', borderTop:'5px solid black', }}>
+            <Grid columns={16} sx={{backgroundImage:'url("/assets/ui/fantasia2.jpg",   )',  backgroundPositionY:'-600px', height:'300px', marginTop:'5px', borderTop:'5px solid black', }}>
 
             </Grid>
 
