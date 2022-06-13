@@ -14,7 +14,7 @@ import {Libro} from '../../../models'
 
 
 const PrestamoLibroPage=({libros})=> {
-
+ 
    
 
     
