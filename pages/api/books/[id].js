@@ -20,10 +20,15 @@ export default function handler(req, res) {
 
 
 async function getBookById(req, res) {
-    await db.connect();
-    const {id}=(req.query)
-    const book= await Libro.findById(id);
-    await db.disconnect();
-    return res.status(200).json(book);
+    try {
+        await db.connect();
+        const {id}=(req.query)
+        const book= await Libro.findById(id);
+        await db.disconnect();
+        return res.status(200).json(book);
+        
+    } catch (error) {
+        return res.status(500).json({'message':'Error al obtener el libro'});
+    }
 }
 
