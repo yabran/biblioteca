@@ -68,163 +68,167 @@ console.log(formData)
   
   
     return (
-    <Box ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'700px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
-    <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
-        {edit?'Editar Libro':'Cargar libro'}
-    </Typography>
-    <hr/>
-    <form onSubmit={handleSubmit} noValidate>
+    <Grid container sx={{justifyContent:'center'}}>
 
-            <Box sx={{ width:'100%',  padding:'10px 20px',alignItems:'center', justifyContent:'center', flexDirection:'column', display:'flex' }}>
-                <Grid container spacing={2}>
-                    
+        <Grid item xs={14} sm={6} ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'100%', height:'700px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+        <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
+            {edit?'Editar Libro':'Cargar libro'}
+        </Typography>
+        <hr/>
+        <form onSubmit={handleSubmit} noValidate>
 
-                    <Grid item xs={12}>
-                        <TextField 
-                            type='text'
-                            label="Titulo"
-                            variant="filled"
-                            name='titulo'
-                            value={formData.titulo}
-                            onChange={onChangeData}
-                            fullWidth
-                         />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            label="Autor"
-                            type='text'
-                            variant="filled"
-                            name='autor'
-                            value={formData.autor}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            label="Editorial"
-                            type='text'
-                            variant="filled"
-                            name='editorial'
-                            value={formData.editorial}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField 
-                            label="Estante"
-                            type='text'
-                            variant="filled"
-                            name='estante'
-                            value={formData.estante}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField 
-                            label="Posicion"
-                            type='number'
-                            variant="filled"
-                            name='posicion'
-                            value={formData.posicion}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                      
-                         <TextField
-                            value={newTagValue}
-                            onChange={({target})=>setNewTagValue(target.value)}
-                            label="Etiquetas"
-                            variant="filled"
-                            fullWidth 
-                            sx={{ mb: 1 }}
-                            onKeyUp={(e)=>e.code==='Space'?addTag(newTagValue):undefined}
-                            helperText="Presiona barra espaciadora para agregar nueva etiqueta"
-                        />
+                <Box sx={{ width:'100%',  padding:'10px 20px',alignItems:'center', justifyContent:'center', flexDirection:'column', display:'flex' }}>
+                    <Grid container spacing={2}>
                         
-                    </Grid>
-                  
-                    <Grid item xs={12}>
-                    <Box sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            listStyle: 'none',
-                            p: 0,
-                            m: 0,
-                        }}
-                        component="ul">
-                            {
-                               formData.tags.map((tag) => {
 
-                                return (
-                                    <Chip
-                                        key={tag}
-                                        label={tag}
-                                        onDelete={ () => onDeleteTag(tag)}
-                                        color="primary"
-                                        size='small'
-                                        sx={{ ml: 1, mt: 1}}
-                                    />
-                                );
-                            })}
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12}>
-                            <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                options={['Novela','Cuentos', 'Fabulas','Poesia','Historia','Geografia', 'Cs Naturales', 'Cs Sociales', 'Psicologia','Biografía','Informatica', 'Matematica', 'Lengua', 'Historietas','Comunicacion', 'Educacion Civica','Otro'].sort()}
+                        <Grid item xs={12}>
+                            <TextField 
+                                type='text'
+                                label="Titulo"
+                                variant="filled"
+                                name='titulo'
+                                value={formData.titulo}
+                                onChange={onChangeData}
                                 fullWidth
-                                value={edit?formData.genero:'Novela'}
-                                onChange={(e,v)=>{setFormData({...formData, genero:v})}}
-                                name='genero'
-                                renderInput={(params) => <TextField {...params} label="Genero" />}
                             />
-                    </Grid>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField 
+                                label="Autor"
+                                type='text'
+                                variant="filled"
+                                name='autor'
+                                value={formData.autor}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField 
+                                label="Editorial"
+                                type='text'
+                                variant="filled"
+                                name='editorial'
+                                value={formData.editorial}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField 
+                                label="Estante"
+                                type='text'
+                                variant="filled"
+                                name='estante'
+                                value={formData.estante}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField 
+                                label="Posicion"
+                                type='number'
+                                variant="filled"
+                                name='posicion'
+                                value={formData.posicion}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                        
+                            <TextField
+                                value={newTagValue}
+                                onChange={({target})=>setNewTagValue(target.value)}
+                                label="Etiquetas"
+                                variant="filled"
+                                fullWidth 
+                                sx={{ mb: 1 }}
+                                onKeyUp={(e)=>e.code==='Space'?addTag(newTagValue):undefined}
+                                helperText="Presiona barra espaciadora para agregar nueva etiqueta"
+                            />
+                            
+                        </Grid>
+                    
+                        <Grid item xs={12}>
+                        <Box sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                listStyle: 'none',
+                                p: 0,
+                                m: 0,
+                            }}
+                            component="ul">
+                                {
+                                formData.tags.map((tag) => {
 
-                        <hr width={1}/>
-                        <Divider light sx={{color:'cornflowerblue', height:'2px'}} />
+                                    return (
+                                        <Chip
+                                            key={tag}
+                                            label={tag}
+                                            onDelete={ () => onDeleteTag(tag)}
+                                            color="primary"
+                                            size='small'
+                                            sx={{ ml: 1, mt: 1}}
+                                        />
+                                    );
+                                })}
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                                <Autocomplete
+                                    disablePortal
+                                    id="combo-box-demo"
+                                    options={['Novela','Cuentos', 'Fabulas','Poesia','Historia','Geografia', 'Cs Naturales', 'Cs Sociales', 'Psicologia','Biografía','Informatica', 'Matematica', 'Lengua', 'Historietas','Comunicacion', 'Educacion Civica','Otro'].sort()}
+                                    fullWidth
+                                    value={edit?formData.genero:'Novela'}
+                                    onChange={(e,v)=>{setFormData({...formData, genero:v})}}
+                                    name='genero'
+                                    renderInput={(params) => <TextField {...params} label="Genero" />}
+                                />
+                        </Grid>
 
-                    <Grid item xs={12}>
-                        {!edit?
-                        <Button 
+                            <hr width={1}/>
+                            <Divider light sx={{color:'cornflowerblue', height:'2px'}} />
+
+                        <Grid item xs={12}>
+                            {!edit?
+                            <Button 
+                                color="corn" 
+                                className='circular-btn'
+                                size='large'
+                                fullWidth
+                                type='submit'
+                                variant='contained'
+                            >
+                                Guardar
+                            </Button>
+                            
+                            :
+                            <Button 
                             color="corn" 
                             className='circular-btn'
                             size='large'
                             fullWidth
                             type='submit'
                             variant='contained'
-                        >
-                            Guardar
-                        </Button>
-                        
-                        :
-                        <Button 
-                        color="corn" 
-                        className='circular-btn'
-                        size='large'
-                        fullWidth
-                        type='submit'
-                        variant='contained'
-                         >
-                            Actualizar libro 
-                         </Button>
+                            >
+                                Actualizar libro 
+                            </Button>
 
-                        }
+                            }
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-    </form>
-</Box>
+                </Box>
+        </form>
+        </Grid>
+
+    </Grid>
   )
 }
 

@@ -57,115 +57,118 @@ function AgregarUsuarioForm(props, ref) {
   
   
     return (
-    <Box ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'40%', height:'580px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
-    <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
-        {edit?'Editar usuario':'Crear nuevo usuario'}
-    </Typography>
-    <hr/>
-    <form onSubmit={handleSubmit} noValidate>
+    <Grid container sx={{justifyContent:'center'}}>
+        <Grid item xs={14} sm={6} ref={ref} sx={{backgroundColor:'aliceblue', borderRadius:'9px', border:'2px solid cornflowerblue', color:'white', width:'100%', height:'580px',alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+        <Typography id="modal-modal-title" color='cornflowerblue' sx={{textAlign:'center', pt:3, }} variant="h6" component="h2">
+            {edit?'Editar usuario':'Crear nuevo usuario'}
+        </Typography>
+        <hr/>
+        <form onSubmit={handleSubmit} noValidate>
 
-            <Box sx={{ width:'100%',  padding:'10px 20px',alignItems:'center', justifyContent:'center', flexDirection:'column', display:'flex' }}>
-                <Grid container spacing={2}>
-                    
+                <Box sx={{ width:'100%',  padding:'10px 20px',alignItems:'center', justifyContent:'center', flexDirection:'column', display:'flex' }}>
+                    <Grid container spacing={2}>
+                        
 
-                    <Grid item xs={12}>
-                        <TextField 
-                            type='text'
-                            label="Nombre"
-                            variant="filled"
-                            name='nombre'
-                            value={formData.nombre}
-                            onChange={onChangeData}
-                            fullWidth
-                         />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            label="Apellido"
-                            type='text'
-                            variant="filled"
-                            name='apellido'
-                            value={formData.apellido}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            label="Password"
-                            type='password'
-                            variant="filled"
-                            name='password'
-                            value={formData.password}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            label="Nombre de usuario"
-                            type='text'
-                            variant="filled"
-                            name='username'
-                            value={formData.username}
-                            onChange={onChangeData}
-                            fullWidth 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                            <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                options={['Alumno', 'Biblioteca']}
+                        <Grid item xs={12}>
+                            <TextField 
+                                type='text'
+                                label="Nombre"
+                                variant="filled"
+                                name='nombre'
+                                value={formData.nombre}
+                                onChange={onChangeData}
                                 fullWidth
-                                value={edit?formData.rol:'Alumno'}
-                                onChange={(e,v)=>{setFormData({...formData, rol:v==='Biblioteca'?'Bibliotecario':'Alumno'})}}
-                                name='rol'
-                                renderInput={(params) => <TextField {...params} label="Rol" />}
                             />
-                    </Grid>
-                   
-                  
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField 
+                                label="Apellido"
+                                type='text'
+                                variant="filled"
+                                name='apellido'
+                                value={formData.apellido}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField 
+                                label="Password"
+                                type='password'
+                                variant="filled"
+                                name='password'
+                                value={formData.password}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField 
+                                label="Nombre de usuario"
+                                type='text'
+                                variant="filled"
+                                name='username'
+                                value={formData.username}
+                                onChange={onChangeData}
+                                fullWidth 
+                                
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                                <Autocomplete
+                                    disablePortal
+                                    id="combo-box-demo"
+                                    options={['Alumno', 'Biblioteca']}
+                                    fullWidth
+                                    value={edit?formData.rol:'Alumno'}
+                                    onChange={(e,v)=>{setFormData({...formData, rol:v==='Biblioteca'?'Bibliotecario':'Alumno'})}}
+                                    name='rol'
+                                    renderInput={(params) => <TextField {...params} label="Rol" />}
+                                />
+                        </Grid>
                     
-                  
+                    
+                        
+                    
 
-                        <hr width={1}/>
-                        <Divider light sx={{color:'cornflowerblue', height:'2px'}} />
+                            <hr width={1}/>
+                            <Divider light sx={{color:'cornflowerblue', height:'2px'}} />
 
-                    <Grid item xs={12}>
-                        {!edit?
-                        <Button 
+                        <Grid item xs={12}>
+                            {!edit?
+                            <Button 
+                                color="corn" 
+                                className='circular-btn'
+                                size='large'
+                                fullWidth
+                                type='submit'
+                                variant='contained'
+                            >
+                                Guardar usuario
+                            </Button>
+                            
+                            :
+                            <Button 
                             color="corn" 
                             className='circular-btn'
                             size='large'
                             fullWidth
                             type='submit'
                             variant='contained'
-                        >
-                            Guardar usuario
-                        </Button>
-                        
-                        :
-                        <Button 
-                        color="corn" 
-                        className='circular-btn'
-                        size='large'
-                        fullWidth
-                        type='submit'
-                        variant='contained'
-                         >
-                            Actualizar usuario 
-                         </Button>
+                            >
+                                Actualizar usuario 
+                            </Button>
 
-                        }
+                            }
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-    </form>
-</Box>
+                </Box>
+        </form>
+        </Grid>
+
+    </Grid>
   )
 }
 
