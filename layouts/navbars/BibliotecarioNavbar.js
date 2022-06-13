@@ -86,7 +86,7 @@ export const BibliotecarioNavbar = () => {
                             <Button className='button-navbar' sx={{mr:3}} onClick={(e)=>{router.push('/admin/usuarios')}}>
                                 Usuarios
                             </Button>
-                            <Button className='button-navbar' sx={{mr:3}} onClick={onLogout}>
+                            <Button  className='button-navbar' sx={{mr:3, borderRadius:'0px !important'}} onClick={onLogout}>
                                 Cerrar Sesión
                             </Button>
                            </Box>
