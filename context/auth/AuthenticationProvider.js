@@ -65,7 +65,7 @@ const AuthenticationProvider = ({children}) => {
 
     const login=async(username, password)=>{
         try {
-            const {data}=await bibliotecaApi.post('/user/login', {username, password}, {
+            const {data}=await bibliotecaApi.post('/user/login', {username, password}, { 
                 method: 'POST',
             });
             dispatch({type:'LOGIN', payload:data.user});

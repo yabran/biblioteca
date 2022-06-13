@@ -1,15 +1,15 @@
 import jwt from 'jsonwebtoken';
 
 
-export const signToken = ( username, password ) => {
+export const signToken = ( username, password, rol ) => {
 
     if ( !process.env.JWT_SECRET_SEED ) {
         throw new Error('No hay semilla de JWT - Revisar variables de entorno');
     }
-
+ 
     return jwt.sign(
         // payload
-        { username, password },
+        { username, password, rol },
 
         // Seed
         process.env.JWT_SECRET_SEED,
@@ -37,13 +37,14 @@ export const isValidToken = ( token ) => {
             jwt.verify( token, process.env.JWT_SECRET_SEED || '', (err, payload) => {
                 if ( err ) return reject('JWT no es válido');
 
-                const { username, password } = payload;
-
-                resolve({ username, password });
+                const { username, password, rol } = payload;
+                console.log('envianado', username, password, rol)
+                return resolve({ username, password, rol });
 
             })
         } catch (error) {
-            reject('JWT no es válido');
+            console.log('enviando error')
+            return reject('JWT no es válido');
         }
 
 

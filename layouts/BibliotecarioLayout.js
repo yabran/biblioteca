@@ -1,5 +1,5 @@
 
-import { BibliotecarioNavbar } from './bibliotecario';
+import { BibliotecarioNavbar } from './navbars';
 
 import { useAuthContext } from '../context/auth/AuthenticationProvider';
 import { Grid } from '@mui/material';

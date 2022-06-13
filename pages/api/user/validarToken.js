@@ -13,7 +13,7 @@ export default function handler (req, res) {
             break;
     }
 }
-
+ 
 
 const validarToken = async (req, res) => {
     const token = req.cookies.token;
@@ -32,6 +32,7 @@ const validarToken = async (req, res) => {
         if (!user) {
             return res.status(401).json({message: 'Token no válido', user});
         }else {
+            
             return res.status(200).json({message: 'Token válido', user});
         }
       

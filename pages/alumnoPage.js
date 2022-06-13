@@ -1,20 +1,29 @@
 
-
-import Link from 'next/link';
-import { useState } from 'react';
-
+import { useEffect } from "react";
+import ListBooks from "../components/list/ListBooks";
+import { useAuthContext } from "../context/auth/AuthenticationProvider";
+import { AlumnoLayout } from "../layouts/AlumnoLayout";
 
 const AlumnoPage = ()=>{
 
-    const [collapse, setCollapse] = useState(false)
+    const {checkToken}=useAuthContext()
 
-    return (
+    useEffect(() => {
+        checkToken();
+    
+    }, [])
+    
+
+    return(
         <div>
-           PAgina alumno
+            <AlumnoLayout>
+                <ListBooks alumno={true}/>
+            </AlumnoLayout>
+            
         </div>
-      );
+    )
 }
-  
+
 
 
 

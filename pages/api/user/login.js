@@ -28,7 +28,7 @@ const login= async (req, res) => {
 
     await db.disconnect();
 
-    const token=jwtUtils.signToken(username, password);
+    const token=jwtUtils.signToken(username, password, user.rol);
     return res.status(200).json({user, token});
 
 }

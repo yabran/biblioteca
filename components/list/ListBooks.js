@@ -10,7 +10,7 @@ import { minWidth } from '@mui/system';
 
 
 
-const ListBooks=({search=null})=> {
+const ListBooks=({search=null, alumno=false})=> {
     
 
     const {books, getAllBooks}= useBookContext();
@@ -34,14 +34,27 @@ const ListBooks=({search=null})=> {
     
 
     const columns = [
-        { field: 'indice', headerName: 'Indice', width:100, align:'center', },
-        { field: 'titulo', headerName: 'Titulo del libro', width:260,  },
-        { field: 'autor', headerName: 'Autor', width: 260,  },
+        { field: 'indice', headerName: 'Indice', width:65, align:'center', },
+        { field: 'titulo', headerName: 'Titulo del libro', width:230,  },
+        { field: 'autor', headerName: 'Autor', width: 230,  },
         { field: 'editorial', headerName: 'Editorial', width: 150,  },
         { field: 'genero', headerName: 'Genero', width: 150,  },
-        { field: 'estante', headerName: 'Estante', width: 100, align:'center' },
-        { field: 'posicion', headerName: 'Posicion', width: 100, align:'center' },
-        { field: 'acciones', headerName: 'Acciones', width: 500, align:'center',
+        { field: 'estante', headerName: 'Estante', width: 80, align:'center' },
+        { field: 'posicion', headerName: 'Posicion', width: 80, align:'center' },
+        { field: 'prestado', headerName: 'Estado', width: 120, align:'center', marginLeft:'10px', marginRight:'10px',
+            renderCell:(book)=>{
+                if(book.row.prestado){
+                    return(
+                        <Alert severity="error">Prestado</Alert>
+                    )
+                }else{
+                    return(
+                        <Alert severity="success">Disponible</Alert>
+                    )
+                }
+            }
+        },
+        !alumno&&{ field: 'acciones', headerName: 'Acciones', width: 500, align:'center',
             renderCell:(book)=>{
                 
                 return (
