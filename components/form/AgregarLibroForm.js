@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useState } from 'react'
 import {  Box, Button, Grid, Typography, TextField, Autocomplete, Divider, Chip } from '@mui/material';
 import { useBookContext } from '../../context/libro/BookProvider';
 
-
+ 
 
 function AgregarLibroForm(props, ref) {
     
@@ -26,7 +26,7 @@ function AgregarLibroForm(props, ref) {
       
     }, [getBookById, edit, bookId])
     
-
+console.log(formData)
 
     const onChangeData = (e)=>{
         
