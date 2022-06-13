@@ -113,7 +113,7 @@ function Info({libro}) {
                                     type='submit'
                                     variant='contained'
                                     disabled={onSaving}
-                                    sx={{marginTop:'15px'}}
+                                    sx={{marginTop:'15px', marginRight:'15px'}}
                                     
                                 >
                                     Guardar datos del prestamo
